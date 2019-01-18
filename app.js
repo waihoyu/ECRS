@@ -3,6 +3,8 @@
 var express = require('express')
 var mongoose = require("mongoose")
 var session = require("express-session")
+var adminCtrl = require("./controllers/adminCtrl")
+
 
 var app = express()
 
@@ -15,6 +17,12 @@ app.use(session({
 }))
 
 app.set("view engine","ejs")
+
+app.get("/admin",adminCtrl.showAdminDashborad)
+app.get("/admin/student",adminCtrl.showStudent)
+app.get("/admin/course",adminCtrl.showCoure)
+app.get("/admin/report",adminCtrl.showReport)
+
 
 // app.get("/",function (request,response) {
 //     response.send("你好")
