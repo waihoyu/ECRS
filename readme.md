@@ -1,7 +1,7 @@
 
 ## 选修课报名系统（ECRS）
 
-   ###技术栈：express、express-session、formidable、jquery、mongoose、bootstrap、ejs
+   ###  技术栈：express、express-session、formidable、jquery、mongoose、bootstrap、ejs
 
    ### 技术选型：
     服务器破还要高并发，nodejs很适合，并且选修课系统都是io没有计算，nodejs更适合了。
