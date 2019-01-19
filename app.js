@@ -18,6 +18,8 @@ app.use(session({
 
 app.set("view engine","ejs")
 
+app.get("/",adminCtrl.showAdminDashborad)
+
 app.get("/admin",adminCtrl.showAdminDashborad)
 app.get("/admin/student",adminCtrl.showStudent)
 app.get("/admin/course",adminCtrl.showCoure)
