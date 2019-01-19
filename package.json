@@ -1,0 +1,33 @@
+{
+  "name": "ecrs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waihoyu/ECRS.git"
+  },
+  "keywords": [
+    "ECRS"
+  ],
+  "author": "waihoyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waihoyu/ECRS/issues"
+  },
+  "homepage": "https://github.com/waihoyu/ECRS#readme",
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "ejs": "^2.5.6",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "jquery": "^3.3.1",
+    "mongoose": "^5.4.1",
+    "node-xlsx": "^0.12.1",
+    "popper.js": "^1.14.6"
+  }
+}
