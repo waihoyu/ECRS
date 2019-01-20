@@ -3,6 +3,7 @@ let formidable = require('formidable')
 let path = require("path")
 let fs = require("fs")
 let xlsx = require("node-xlsx")
+let Student = require("../models/Students")
 
 exports.showAdminDashborad = function (req,res) {
     res.render("admin/index",{
@@ -48,12 +49,14 @@ exports.doImport = function (req,res) {
             }
             for (let i = 0;i<6;i++){
                 if (xmlfileContent[i].data[0][0] != "学号"||
-                    xmlfileContent[i].data[0][1] != "姓名"||
-                    xmlfileContent[i].data[0][2] != "性别"
+                    xmlfileContent[i].data[0][1] != "姓名"
                 ){
                     res.send("缺少子表格表头")
+                    return
                 }
             }
+            Student.importStudent(xmlfileContent)
+            res.send("上传成功！")
             return
         }else {
             // 检查拓展名
