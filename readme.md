@@ -19,4 +19,8 @@
    ![image](./assets/系统用例图.jpg)
    
    
-   #### Excel表格的识别，使用node-xlsx插件来处理
+   ####  业务技术点
+   
+    1、Excel表格的识别，使用node-xlsx插件来处理。
+    2、上传excel时，要彻底删除所有的数据。
+    3、

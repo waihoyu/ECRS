@@ -19,10 +19,11 @@ app.use(session({
 app.set("view engine","ejs")
 
 app.get("/",adminCtrl.showAdminDashborad)
-
 app.get("/admin",adminCtrl.showAdminDashborad)
 app.get("/admin/student",adminCtrl.showStudent)
-app.get("/admin/course",adminCtrl.showCoure)
+app.get("/admin/student/import",adminCtrl.showImport)
+app.post("/admin/student/import",adminCtrl.doImport)
+app.get("/admin/course",adminCtrl.showCourse)
 app.get("/admin/report",adminCtrl.showReport)
 
 
