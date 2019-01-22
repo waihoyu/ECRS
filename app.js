@@ -18,14 +18,14 @@ app.use(session({
 
 app.set("view engine","ejs")
 
-app.get("/",adminCtrl.showAdminDashborad)
-app.get("/admin",adminCtrl.showAdminDashborad)
-app.get("/admin/student",adminCtrl.showStudent)
-app.get("/admin/student/import",adminCtrl.showImport)
-app.post("/admin/student/import",adminCtrl.doImport)
-app.get("/admin/course",adminCtrl.showCourse)
-app.get("/admin/report",adminCtrl.showReport)
-
+app.get("/"                             ,adminCtrl.showAdminDashborad)
+app.get("/admin"                        ,adminCtrl.showAdminDashborad)
+app.get("/admin/student"                ,adminCtrl.showStudent)
+app.get("/admin/student/import"         ,adminCtrl.showImport)
+app.post("/admin/student/import"        ,adminCtrl.doImport)
+app.get("/admin/course"                 ,adminCtrl.showCourse)
+app.get("/admin/report"                 ,adminCtrl.showReport)
+app.get("/student"                      ,adminCtrl.getAllStudent)
 
 // app.get("/",function (request,response) {
 //     response.send("你好")
