@@ -43,4 +43,7 @@
    ####8、导入图：
    
    ![image](./assets/导入图.png)    
+   
+   ![image](./assets/导入图2.png)  
 
+   ####9、模糊查询：
