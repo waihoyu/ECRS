@@ -78,6 +78,6 @@ exports.doImport = function (req,res) {
 
 exports.getAllStudent = function (req,res) {
     Student.find({},function (err,results) {
-        res.json({"result":results})
+        res.send({"rows":results})
     })
 }

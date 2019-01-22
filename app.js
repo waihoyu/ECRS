@@ -1,19 +1,19 @@
+
 //创建express程序
 
-var express = require('express')
-var mongoose = require("mongoose")
-var session = require("express-session")
-var adminCtrl = require("./controllers/adminCtrl")
+let express = require('express')
+let mongoose = require("mongoose")
+let session = require("express-session")
+let adminCtrl = require("./controllers/adminCtrl")
 
-
-var app = express()
+let app = express()
 
 mongoose.connect("mongodb://localhost/ecrs")
 app.use(session({
-    secret: 'test',
-    cookie: {maxAge:6000},
-    resave: false,
-    saveUninitialized: true
+    secret:                 'test',
+    cookie:                 {maxAge:6000},
+    resave:                 false,
+    saveUninitialized:      true
 }))
 
 app.set("view engine","ejs")
@@ -40,4 +40,3 @@ app.use(function (req,res) {
 
 app.listen(5000)
 console.log("程序已经运行在5000端口");
-

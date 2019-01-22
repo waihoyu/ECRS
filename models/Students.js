@@ -3,13 +3,14 @@ let studentSchema = new mongoose.Schema({
     "sid"                       :Number,
     "name"                      :String,
     "sex"                       :String,
-    "grade"                     :Number,
+    "grade"                     :String,
     "password"                  :String,
     "ChangedPassword"          :{type:Boolean,default:false}
 })
 studentSchema.statics.importStudent = function(xmlfileContent){
     let tag = 0
     let str = "ABCDEFGHIJKLNMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()"
+    let gradeArr = ["初一","初二","初三","高一","高二","高三"];
     mongoose.connection.collection("students").drop(function () {
         try {
             for (let i = 0;i < 6;i++){
@@ -20,11 +21,11 @@ studentSchema.statics.importStudent = function(xmlfileContent){
                         password += str.charAt(parseInt(str.length * Math.random()))
                     }
                     let s = new Student({
-                        "sid":   xmlfileContent[i].data[j][0],
-                        "name":  xmlfileContent[i].data[j][1],
-                        "sex":   xmlfileContent[i].data[j][2]||"",
-                        "grade": i + 1,
-                        "password":  password
+                        "sid"           :xmlfileContent[i].data[j][0],
+                        "name"          :xmlfileContent[i].data[j][1],
+                        "sex"           :xmlfileContent[i].data[j][2]||"",
+                        "grade"         :gradeArr[i],
+                        "password"      :password
                     })
                     s.save()
                     // console.log(tag++)
