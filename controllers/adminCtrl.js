@@ -81,3 +81,27 @@ exports.getAllStudent = function (req,res) {
         res.send({"rows":results})
     })
 }
+
+
+exports.updateStudent = function (req,res) {
+    let sid = parseInt(req.params.sid)
+    let form = new formidable.IncomingForm()
+    form.parse(req, function (err,fields,files) {
+        let key = fields.cellname
+        let value = fields.value
+       Student.find({"sid":sid},function (err,results) {
+           if (err){
+               res.send({"result":-2})
+               return
+           }
+           if (results.length == 0){
+               res.send({"result":-1})
+               return
+           }
+           let thestudent = results[0]
+           thestudent[key] = value
+           thestudent.save()
+           res.send({"result":1})
+       })
+    })
+}

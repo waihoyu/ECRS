@@ -11,3 +11,34 @@
 	position: relative;
 	top: -4px;
 }
+
+.tooltipsy
+{
+    padding: 10px;
+    max-width: 200px;
+    color: #303030;
+    background-color: #f5f5b5;
+    border: 1px solid #deca7e;
+}
+
+.info_tip{
+	position: fixed;
+	top: 200px;
+	left: 50%;
+}
+
+.searchbox{
+	margin-bottom: 10px;
+}
+.ui-jqgrid .ui-pg-input{
+	color:#333;
+}
+
+.myalert{
+	padding: 0px 10px;
+	line-height: 20px;
+	margin-top: 8px;
+	background: white;
+	border: none;
+	padding-left: 0;
+}

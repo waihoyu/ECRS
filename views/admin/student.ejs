@@ -41,6 +41,7 @@
                 <input type="button" value="删除" id="delbtn"/>
             </div>
         </div>
+        <a id="info_tip" class="info_tip" href="#"></a>
     </div>
 </div>
 
@@ -92,7 +93,9 @@
                 "cellname" : cellname,
                 "value" : value
             },function(data){
+                console.log(data)
                 if(data.result == 1){
+
                     showtip("更改成功");
 
                 }else if(data.result == -1){
@@ -158,6 +161,8 @@
         })
 
     });
+
+
 </script>
 </body>
 </html>

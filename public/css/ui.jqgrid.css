@@ -7,7 +7,8 @@
 	left: 0;
 	top: 0;
 	padding: .0em;
-	font-size: 11px
+	font-size: 16px;
+	font-family: Microsoft Yahei;
 }
 
 .ui-jqgrid .ui-jqgrid-titlebar {
@@ -62,14 +63,15 @@
 }
 
 .ui-jqgrid .ui-jqgrid-htable th {
-	height: 22px;
-	padding: 0 2px 0 2px
+	height: 32px;
+	padding: 0 2px 0 2px;
 }
 
 .ui-jqgrid .ui-jqgrid-htable th div {
 	overflow: hidden;
 	position: relative;
-	height: 17px
+	height: 32px;
+	line-height: 32px;
 }
 
 .ui-th-column,.ui-jqgrid .ui-jqgrid-htable th.ui-th-column {
@@ -114,17 +116,21 @@
 	overflow: hidden;
 	position: absolute;
 	display: inline;
-	cursor: pointer !important
+	cursor: pointer !important;
+	top: 8px;
 }
 
 .ui-jqgrid .ui-icon-asc {
 	margin-top: -3px;
-	height: 12px
+	height: 12px;
+	/* position: relative; */
+	/* top: 2px; */
+	/* left: 0px; */
 }
 
 .ui-jqgrid .ui-icon-desc {
 	margin-top: 3px;
-	height: 12px
+	height: 12px;
 }
 
 .ui-jqgrid .ui-i-asc {
@@ -182,11 +188,11 @@ tr.ui-search-toolbar select {
 	font-weight: normal;
 	overflow: hidden;
 	white-space: pre;
-	height: 22px;
+	height: 30px;
 	padding: 0 2px 0 2px;
 	border-bottom-width: 1px;
 	border-bottom-color: inherit;
-	border-bottom-style: solid
+	border-bottom-style: solid;
 }
 
 .ui-jqgrid tr.jqgfirstrow td {
@@ -341,9 +347,11 @@ tr.ui-search-toolbar select {
 }
 
 .ui-jqgrid .ui-pg-input {
-	height: 13px;
+	height: 18px;
 	font-size: .8em;
-	margin: 0
+	margin: 0;
+	line-height: 18px;
+	text-align: center;
 }
 
 .ui-jqgrid .ui-pg-selbox {
