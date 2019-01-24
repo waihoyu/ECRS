@@ -1,6 +1,6 @@
 let mongoose = require("mongoose")
 let studentSchema = new mongoose.Schema({
-    "sid"                       :Number,
+    "sid"                       :String,
     "name"                      :String,
     "sex"                       :String,
     "grade"                     :String,

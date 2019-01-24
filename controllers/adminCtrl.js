@@ -105,3 +105,11 @@ exports.updateStudent = function (req,res) {
        })
     })
 }
+
+exports.studentJSON = function (req,res) {
+    Student.find({},function (err,results) {
+        console.log(results)
+        res.send(results)
+    })
+}
+

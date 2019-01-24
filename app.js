@@ -27,6 +27,7 @@ app.get("/admin/course"                 ,adminCtrl.showCourse)
 app.get("/admin/report"                 ,adminCtrl.showReport)
 app.get("/student"                      ,adminCtrl.getAllStudent)
 app.post("/student/:sid"                ,adminCtrl.updateStudent)
+app.get("/studentJSON"                ,adminCtrl.studentJSON)
 
 // app.get("/",function (request,response) {
 //     response.send("你好")
