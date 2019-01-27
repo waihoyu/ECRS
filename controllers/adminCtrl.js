@@ -86,8 +86,7 @@ exports.getAllStudent = function (req, res) {
 
 exports.getAllStudent2 = function (req, res) {
 
-    let rows = url.parse(req.url, true).query.rows
-    console.log(rows)
+    let rows = parseInt(url.parse(req.url, true).query.rows)
     let page = url.parse(req.url, true).query.page
     let sidx = url.parse(req.url, true).query.sidx
     let sord = url.parse(req.url, true).query.sord
@@ -124,7 +123,7 @@ exports.getAllStudent2 = function (req, res) {
         //     // console.log(err)
         //     // res.send({"rows":results})
         // })
-        Student.find(findFiler).sort(sortobj).limit(100).skip(rows * (page - 1)).exec(function (err, results) {
+        Student.find(findFiler).sort(sortobj).limit(rows).skip(rows * (page - 1)).exec(function (err, results) {
             console.log(results)
             res.json(
                 {
