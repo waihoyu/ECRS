@@ -166,3 +166,8 @@ exports.studentJSON = function (req, res) {
     })
 }
 
+exports.showAdminStudentAdd = function (req, res) {
+    res.render("admin/student/add", {
+        page: "add"
+    })
+}
