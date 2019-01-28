@@ -1,18 +1,18 @@
+<link href="/css/application-a07755f5.css" rel="stylesheet" type="text/css"/>
 
-
-<form id="fileform" action="/admin/student/import" method="post" enctype="multipart/form-data">
+<form id="fileForm" action="/admin/student/import" method="post" enctype="multipart/form-data">
 	<p>
-	  <input type="file"  class="btn" name="studentexcel" />
+	  <input type="file"  class="btn btn-default" name="studentexcel" value="上传文件"/>
 	</p>
 	<p>
-	  <input type="submit" class="btn btn-success" value="上传文件" />
+	  <input type="submit" class="btn btn-success" value="上传文件" id="uploadFile" />
 	</p>
 </form>
 
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script type="text/javascript">
-    $("#fileform").on("submit", function () {
+    $("#fileForm").on("submit", function () {
         if (!confirm("请注意，上传Excel将彻底重置数据库！")) {
             //return false将会阻止表单的继续上传
             return false;
