@@ -171,3 +171,23 @@ exports.showAdminStudentAdd = function (req, res) {
         page: "add"
     })
 }
+
+exports.addStudent = function (req, res) {
+    let form = new formidable.IncomingForm()
+    form.parse(req, function (err, fields, files) {
+        let s = new Student({
+            sid             :fields.sid,
+            name            :fields.name,
+            grade           :fields.grade,
+            password        :fields.password
+        })
+        s.save(function (err) {
+            if (err){
+                res.join({"result":-1})
+                return
+            }
+            res.join({"result":-1})
+        })
+    })
+}
+

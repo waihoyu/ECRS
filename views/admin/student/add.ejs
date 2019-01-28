@@ -27,16 +27,72 @@
                 新增学生界面
             </div>
             <div class='panel-body'>
-                <p>
-                    请上传符合规定的Excel表格，形式是每个年级一个子表，每列依次是：学号、姓名、性别。
-                </p>
-                <!-- 包裹在iframe里面，体验更好。因为我们是同步上传文件，不是Ajax，防止页面跳转的奇淫技巧就是iframe -->
-                <!--<iframe src="/template/excelform.html" frameborder="0" width="500"></iframe>-->
+                <div class="row">
+                    <div class="col-lg-5">
+                        <p>
+                            学号：
+                        </p>
+                        <p>
+                            <input type="text" class="form-control" id="sidTxt">
+                        </p>
+                        <p>
+                            姓名：
+                        </p>
+                        <p>
+                            <input type="text" class="form-control" id="nameTxt">
+                        </p>
+                        <p>
+                            年纪：
+                        </p>
+                        <p>
+                            <select  class="form-control" id="gradeSelect">
+                                <option value="初一">初一</option>
+                                <option value="初二">初二</option>
+                                <option value="初三">初三</option>
+                                <option value="高一">高一</option>
+                                <option value="高二">高二</option>
+                                <option value="高三">高三</option>
+                            </select>
+                        </p>
+                        <p>
+                            初始密码：
+                        </p>
+                        <p>
+                            <input type="text" class="form-control" id="passwordTxt">
+                        </p>
+                        <p>
+                            <input type="button" value="提交" class="btn btn-success" id="submitBtn">
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript">
+    $("#submitBtn").click(function () {
+        let sid = $("#sidTxt").val()
+        let name = $("#nameTxt").val()
+        let grade = $("#gradeSelect").val()
+        let password = $("#passwordTxt").val()
+        console.log("test")
+        $.post("/student",{
+            sid:sid,
+            name:name,
+            grade:grade,
+            password:password
+        },function (data) {
+            if (data.result == 1){
+                alert("成功添加！")
+                $("input").val("")
+            }else {
+                alert("添加失败！")
+            }
+        })
+    })
+</script>
 </body>
 
 </html>
