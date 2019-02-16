@@ -47,6 +47,7 @@
                         </p>
                         <p>
                             <select  checkvalid class="form-control" id="gradeSelect">
+                                <option value="">请选择</option>
                                 <option value="初一">初一</option>
                                 <option value="初二">初二</option>
                                 <option value="初三">初三</option>
@@ -79,25 +80,59 @@
         "grade"     :   true,
         "password"  :   true
     }
-    $("#sidTxt").change(function () {
+    $("#sidTxt").blur(function () {
+        $(this).clearTip()
         var _sid = $(this).val()
         if (/^[\d]{9}/.test(_sid)){
             invalid.sid = false
-              $("div.alert").remove()
+              $(this).successTip("经检查，合法，不重复！")
         }else {
             invalid.sid = true
-            $(this).after($alertTip("danger","学号必须9位数字"))
+            $(this).dangerTip("学号必须9位数字")
+            // $(this).after($alertTip("danger","学号必须9位数字"))
+        }
+    })
+
+    $("#nameTxt").blur(function () {
+        $(this).clearTip()
+        var nameTxt = $(this).val()
+        if (/^[\d]{9}/.test(nameTxt)){
+            invalid.sid = false
+            $("div.alert").remove()
+        }else {
+            invalid.sid = true
+            $(this).dangerTip("姓名必填")
+        }
+    })
+
+    $("#gradeSelect").change(function () {
+        var grade = $(this).val()
+        if (grade){
+            invalid.grade = false
+        }
+        else {
+            invalid.grade = true
         }
     })
 
     $.fn.extend({
+        "dangerTip":       function (txt) {
+            this.after($alertTip("danger",txt))
+        },
+        "clearTip":     function () {
+            //
+            this.nextAll(".alert").remove()
+        },
+        "successTip":   function () {
 
+        }
     })
 
     function $alertTip(className,txt){
         return $("<div class='alert  myalert alert-" + className +   "'role='alert'>" + txt +"</div>")
     }
-    $("[checkvalid]").change(function () {
+
+    $("[checkvalid]").blur(function () {
         var allValid = true;
         for (let k in invalid){
             if (invalid[k]){
@@ -111,6 +146,10 @@
         else {
             $("#submitBtn").attr("disabled",true)
         }
+    })
+
+    $("[checkvalid1]").bind("focus change",function () {
+        $(this).clearTip()
     })
     $("#submitBtn").click(function () {
         let sid = $("#sidTxt").val()
