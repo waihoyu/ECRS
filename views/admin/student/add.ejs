@@ -33,19 +33,20 @@
                             学号：
                         </p>
                         <p>
-                            <input type="text" class="form-control" id="sidTxt">
+                            <input checkvalid type="text" class="form-control" id="sidTxt">
+
                         </p>
                         <p>
                             姓名：
                         </p>
                         <p>
-                            <input type="text" class="form-control" id="nameTxt">
+                            <input checkvalid type="text" class="form-control" id="nameTxt">
                         </p>
                         <p>
                             年纪：
                         </p>
                         <p>
-                            <select  class="form-control" id="gradeSelect">
+                            <select  checkvalid class="form-control" id="gradeSelect">
                                 <option value="初一">初一</option>
                                 <option value="初二">初二</option>
                                 <option value="初三">初三</option>
@@ -58,10 +59,10 @@
                             初始密码：
                         </p>
                         <p>
-                            <input type="text" class="form-control" id="passwordTxt">
+                            <input checkvalid type="text" class="form-control" id="passwordTxt">
                         </p>
                         <p>
-                            <input type="button" value="提交" class="btn btn-success" id="submitBtn">
+                            <input type="button" value="提交" class="btn btn-success" id="submitBtn" disabled>
                         </p>
                     </div>
                 </div>
@@ -72,6 +73,45 @@
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script type="text/javascript">
+    let invalid = {
+        "sid"       :   true,
+        "name"      :   true,
+        "grade"     :   true,
+        "password"  :   true
+    }
+    $("#sidTxt").change(function () {
+        var _sid = $(this).val()
+        if (/^[\d]{9}/.test(_sid)){
+            invalid.sid = false
+              $("div.alert").remove()
+        }else {
+            invalid.sid = true
+            $(this).after($alertTip("danger","学号必须9位数字"))
+        }
+    })
+
+    $.fn.extend({
+
+    })
+
+    function $alertTip(className,txt){
+        return $("<div class='alert  myalert alert-" + className +   "'role='alert'>" + txt +"</div>")
+    }
+    $("[checkvalid]").change(function () {
+        var allValid = true;
+        for (let k in invalid){
+            if (invalid[k]){
+                allValid = false
+                break
+            }
+        }
+        if (allValid) {
+            $("#submitBtn").attr("disabled",false)
+        }
+        else {
+            $("#submitBtn").attr("disabled",true)
+        }
+    })
     $("#submitBtn").click(function () {
         let sid = $("#sidTxt").val()
         let name = $("#nameTxt").val()
