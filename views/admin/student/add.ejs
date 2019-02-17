@@ -34,7 +34,6 @@
                         </p>
                         <p>
                             <input checkvalid type="text" class="form-control" id="sidTxt">
-
                         </p>
                         <p>
                             姓名：
@@ -74,12 +73,14 @@
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script type="text/javascript">
+
     let invalid = {
         "sid"       :   true,
         "name"      :   true,
         "grade"     :   true,
         "password"  :   true
     }
+
     $("#sidTxt").blur(function () {
         $(this).clearTip()
         var _sid = $(this).val()
@@ -147,6 +148,7 @@
             $("#submitBtn").attr("disabled",true)
         }
     })
+
     function checkStrength(){
         var lv = 0
 
@@ -160,7 +162,7 @@
         let name = $("#nameTxt").val()
         let grade = $("#gradeSelect").val()
         let password = $("#passwordTxt").val()
-        console.log("test")
+
         $.post("/student",{
             sid:sid,
             name:name,
@@ -175,6 +177,7 @@
             }
         })
     })
+
 </script>
 </body>
 
