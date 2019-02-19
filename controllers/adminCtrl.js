@@ -191,3 +191,18 @@ exports.addStudent = function (req, res) {
     })
 }
 
+//propfind类型接口，检查学生是否存在
+exports.checkStudentExist = function (req, res) {
+    let sid = parseInt(req.params.sid)
+    if (!sid){
+        res.json({"result":-1})
+        return
+    }
+    Student.count({"sid":sid},function (err,count) {
+        if (err){
+            res.json({"result":-1})
+            return
+        }
+        res.json({"result":count})
+    })
+}

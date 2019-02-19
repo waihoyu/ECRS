@@ -30,6 +30,7 @@ app.get("/student"                      ,adminCtrl.getAllStudent2)
 app.post("/student"                      ,adminCtrl.addStudent)
 app.post("/student/:sid"                ,adminCtrl.updateStudent)
 app.get("/studentJSON"                  ,adminCtrl.studentJSON)
+app.propfind("/student/:sid"            ,adminCtrl.checkStudentExist)
 
 // app.get("/",function (request,response) {
 //     response.send("你好")
