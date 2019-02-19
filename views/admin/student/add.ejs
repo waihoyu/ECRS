@@ -86,22 +86,36 @@
         var _sid = $(this).val()
         if (/^[\d]{9}/.test(_sid)){
             invalid.sid = false
-              $(this).successTip("经检查，合法，不重复！")
+            $(this).successTip("经检查，合法，不重复！")
         }else {
             invalid.sid = true
             $(this).dangerTip("学号必须9位数字")
+            return
             // $(this).after($alertTip("danger","学号必须9位数字"))
         }
+        $.ajax({
+            "url"       :   "/student/" + _sid,
+            "type"      :   "propfind",
+            "success"   :   function (data) {
+                if (data.result == 0){
+                    invalid.sid = false
+                    $(this).successTip("经服务器检查，和现有学号不重复")
+                } else {
+                    invalid.sid = true
+                    $(this).successTip("重复的学号，请重新输入！")
+                }
+            }
+        })
     })
 
     $("#nameTxt").blur(function () {
         $(this).clearTip()
         var nameTxt = $(this).val()
-        if (/^[\d]{9}/.test(nameTxt)){
-            invalid.sid = false
+        if (nameTxt){
+            invalid.name = false
             $("div.alert").remove()
         }else {
-            invalid.sid = true
+            invalid.name = true
             $(this).dangerTip("姓名必填")
         }
     })
