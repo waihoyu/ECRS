@@ -175,6 +175,38 @@ exports.showAdminStudentAdd = function (req, res) {
 exports.addStudent = function (req, res) {
     let form = new formidable.IncomingForm()
     form.parse(req, function (err, fields, files) {
+        let sid = fields.sid
+        if (!/^[\d]{9}$/.test(sid)) {
+            res.send({"result":-2})
+            return
+        }
+
+        Student.count({"sid":sid},function (err,count) {
+            if (err){
+                res.json({"result":-1})
+                return
+            }
+            if (count != 0){
+                res.json({"result":-3})
+                return
+            }
+        })
+
+        var nameTxt = fields.name
+        if (!/^[\u4E00-\u9FA5]{2,5}(?:.[\u4E00-\u9FA5]{2,5})*$/.test(nameTxt)){
+            res.send({"result":-5})
+            return
+        }
+
+        // var nameTxt = fields.name
+        // if (/^[\u4E00-\u9FA5]{2,5}(?:.[\u4E00-\u9FA5]{2,5})*$/.test(nameTxt)){
+        //     invalid.name = false
+        //     $(this).successTip("合法")
+        // }else {
+        //     invaild.name = true
+        //     $(this).dangerTip("没有通过正则验证，必须合法中文")
+        // }
+
         let s = new Student({
             sid             :fields.sid,
             name            :fields.name,
