@@ -57,3 +57,38 @@
    
 
    ####11、密码正则以及密码强度：
+
+
+   ####12、Get请求和POST请求在NodeJS中如何得到，必须要知道：
+       
+       GET请求：
+       var page = url.parse(req.url,true).query.page;
+       
+       POST请求：
+       var form = new formidable.IncomingForm();
+       form.parse(req,function(err,fields,files){
+       
+       })
+       
+       parma参数得到：
+       
+       req.params.sid
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+   
+   
+   

@@ -11,7 +11,7 @@ let app = express()
 mongoose.connect("mongodb://localhost/ecrs")
 app.use(session({
     secret:                 'test',
-    cookie:                 {maxAge:6000},
+    cookie:                 {maxAge: 6000},
     resave:                 false,
     saveUninitialized:      true
 }))
@@ -27,7 +27,7 @@ app.get("/admin/student/add"            ,adminCtrl.showAdminStudentAdd)
 app.get("/admin/course"                 ,adminCtrl.showCourse)
 app.get("/admin/report"                 ,adminCtrl.showReport)
 app.get("/student"                      ,adminCtrl.getAllStudent2)
-app.post("/student"                      ,adminCtrl.addStudent)
+app.post("/student"                     ,adminCtrl.addStudent)
 app.post("/student/:sid"                ,adminCtrl.updateStudent)
 app.get("/studentJSON"                  ,adminCtrl.studentJSON)
 app.propfind("/student/:sid"            ,adminCtrl.checkStudentExist)

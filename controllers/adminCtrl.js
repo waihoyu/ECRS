@@ -1,9 +1,9 @@
-let formidable = require('formidable')
-let path = require("path")
-let fs = require("fs")
-let xlsx = require("node-xlsx")
-let Student = require("../models/Students")
-let url = require("url")
+let formidable  = require('formidable')
+let path        = require("path")
+let fs          = require("fs")
+let xlsx        = require("node-xlsx")
+let Student     = require("../models/Students")
+let url         = require("url")
 
 exports.showAdminDashborad = function (req, res) {
     res.render("admin/index", {
@@ -83,26 +83,23 @@ exports.getAllStudent = function (req, res) {
 }
 
 //   /student?_search=false&nd=1491010477409&rows=10&page=4&sidx=sid&sord=asc&keyword=山
-
 exports.getAllStudent2 = function (req, res) {
-
     let rows = parseInt(url.parse(req.url, true).query.rows)
     let page = url.parse(req.url, true).query.page
     let sidx = url.parse(req.url, true).query.sidx
     let sord = url.parse(req.url, true).query.sord
     let keyword = url.parse(req.url, true).query.keyword
     let sordNumber = sord == "asc" ? 1 : -1
-
-    let findFiler = {}
+    let findFiler  = {}
     if (keyword === undefined || keyword == "") {
         findFiler = {}
     } else {
         let regexp = new RegExp(keyword, "g")
         findFiler = {
             $or: [
-                {"sid": regexp},
-                {"name": regexp},
-                {"grade": regexp}
+                {"sid"      : regexp},
+                {"name"     : regexp},
+                {"grade"    : regexp}
             ]
         }
     }
@@ -123,14 +120,14 @@ exports.getAllStudent2 = function (req, res) {
         //     // console.log(err)
         //     // res.send({"rows":results})
         // })
+
         Student.find(findFiler).sort(sortobj).limit(rows).skip(rows * (page - 1)).exec(function (err, results) {
-            console.log(results)
             res.json(
                 {
-                    "records": count,
-                    "page": page,
-                    "total": total,
-                    "rows": results
+                    "records"   : count,
+                    "page"      : page,
+                    "total"     : total,
+                    "rows"      : results
                 })
         })
     })
@@ -180,7 +177,6 @@ exports.addStudent = function (req, res) {
             res.send({"result":-2})
             return
         }
-
         Student.count({"sid":sid},function (err,count) {
             if (err){
                 res.json({"result":-1})
@@ -191,13 +187,11 @@ exports.addStudent = function (req, res) {
                 return
             }
         })
-
         var nameTxt = fields.name
         if (!/^[\u4E00-\u9FA5]{2,5}(?:.[\u4E00-\u9FA5]{2,5})*$/.test(nameTxt)){
             res.send({"result":-5})
             return
         }
-
         // var nameTxt = fields.name
         // if (/^[\u4E00-\u9FA5]{2,5}(?:.[\u4E00-\u9FA5]{2,5})*$/.test(nameTxt)){
         //     invalid.name = false

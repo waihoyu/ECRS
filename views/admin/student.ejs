@@ -46,7 +46,7 @@
                 <!-- 放置表格的地方 -->
                 <table id="list"></table>
                 <div id="listnav"></div>
-                <input type="button" value="删除" id="delbtn" class="btn btn-danger"/>
+                <input type="button" value="删除" id="delBtn" class="btn btn-danger"/>
             </div>
         </div>
         <a id="info_tip" class="info_tip" href="#"></a>
@@ -150,6 +150,7 @@
         if(!confirm("真的要删除么？")){
             return;
         }
+        alert("删除失败！");
         //发出delete请求就可以了
         $.ajax({
             "url" : "/student",
