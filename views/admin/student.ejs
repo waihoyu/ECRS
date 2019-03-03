@@ -84,37 +84,34 @@
             } ,
             {name:'password'  , index:'password'   , width:50 , editable : true},
         ],
-        rowNum:10,
-        rowList:[10,20,30,400],
+        rowNum: 10,
+        rowList: [10,20,30,400],
         sortname: 'sid',
         viewrecords: true,
-        autowidth:true,
-        pager : '#listnav',
-        cellEdit : true,
-        cellsubmit : "clientArray",
-        height:310,
-        multiselect : true,
-        afterSaveCell : function(rowid, cellname, value, iRow, iCol){
-            //因为设置colModel将sid这列加上了key:true。rowid就是主键，rowid小格格里面填写的内容就是主键。
-            //发出请求
+        autowidth: true,
+        pager: '#listnav',
+        cellEdit: true,
+        cellsubmit: "clientArray",
+        height: 310,
+        multiselect: true,
+        afterSaveCell: function(rowid, cellname, value, iRow, iCol){
+            //  因为设置colModel将sid这列加上了 key: true。rowid就是主键，rowid小格格里面填写的内容就是主键。
+            //  发出请求
+            //  console.log(rowid,cellname,value)
             $.post("/student/" + rowid , {
                 "cellname" : cellname,
                 "value" : value
             },function(data){
-                console.log(data)
                 if(data.result == 1){
-
                     showtip("更改成功");
-
                 }else if(data.result == -1){
                     showtip("你试图更改" + rowid + "，而数据库中没有这个条目。很有可能是其他老师在同时操作，请刷新页面！");
                 }else if(data.result == -2){
-                    showtip("服务器错误，请联系管理员，错误代码-2。");
+                    showtip("服务器错误，请联系管理员，错误代码 -2。");
                 }
             });
         }
     });
-
 
     function showtip(content){
         $('#info_tip').poshytip({
@@ -124,11 +121,11 @@
             alignTo: 'target',
             alignX: 'inner-left',
             offsetX: 0,
-            offsetY: 5
+            offsetY: 5,
+            // color:red
         });
         $('#info_tip').poshytip("show").poshytip('hideDelayed', 800);
     }
-
 
     //监听框框，input是HTML新事件（jquery已经为我们做到了兼容IE6），表示实时输入，可以将汉字拼音输入过程，比如你打考，此时k、a、o都将被得到。
     $("#keywordtxt").bind("input",function(){
@@ -142,7 +139,6 @@
             page:1
         }).trigger("reloadGrid"); //触发表格重新刷新
     });
-
 
     $("#delBtn").click(function(){
         //得到要删除的条目的学号数组
@@ -168,10 +164,7 @@
                 }
             }
         })
-
     });
-
-
 </script>
 </body>
 </html>

@@ -133,6 +133,7 @@ exports.getAllStudent2 = function (req, res) {
     })
 }
 
+//更新学生
 exports.updateStudent = function (req, res) {
     let sid = parseInt(req.params.sid)
     let form = new formidable.IncomingForm()
@@ -141,17 +142,17 @@ exports.updateStudent = function (req, res) {
         let value = fields.value
         Student.find({"sid": sid}, function (err, results) {
             if (err) {
-                res.send({"result": -2})
+                res.send({"result": -2}) // -2表示数据库错误
                 return
             }
             if (results.length == 0) {
-                res.send({"result": -1})
+                res.send({"result": -1}) // -1表示查无此人，无法更改
                 return
             }
             let thestudent = results[0]
             thestudent[key] = value
             thestudent.save()
-            res.send({"result": 1})
+            res.send({"result": 1})  //表示成功
         })
     })
 }

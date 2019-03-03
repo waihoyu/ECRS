@@ -59,7 +59,7 @@
    ####11、密码正则以及密码强度：
 
 
-   ####12、Get请求和POST请求在NodeJS中如何得到，必须要知道：
+   ####12、Get请求和POST请求在NodeJS中如何得到，必须要知道：  
        
        GET请求：
        var page = url.parse(req.url,true).query.page;
@@ -70,9 +70,19 @@
        
        })
        
-       parma参数得到：
+       parma 参数得到：
        
        req.params.sid
+       
+   ####12、RESTful  
+        
+       查询所有学生，get请求到 /student
+       增加学生，post 请求到 /student
+       查询某学生，get请求到 /student/100001
+       修改学生，post请求到 /student/100001
+       删除学生，del 请求到 /student/100001
+       查询某学生是否存在，profind 请求到 /student/100001
+       
        
        
        
